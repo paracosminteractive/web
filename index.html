@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Paracosm Interactive</title>
-    <style>
-        /* Make the page fill the viewport */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #111; /* dark background */
-            color: #fff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<title>Paracosm Interactive</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
 
-        /* Logo styling */
-        .logo {
-            max-width: 60%;   /* scales with window */
-            height: auto;
-        }
+/* Background pulse circle */
+body::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #222;
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0);
+    top: 50%;
+    left: 50%;
+    animation: bgPulse 5s infinite;
+}
 
-        /* Footer text at the bottom */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            font-size: 1.2em;
-        }
-    </style>
+/* Logo styling */
+.logo {
+    position: relative;
+    max-width: 40%;
+    height: auto;
+    z-index: 1;
+    animation: logoPulse 0.3s ease-out infinite;
+    animation-delay: 2s; /* starts after 2s, repeat every 5s */
+}
+
+/* Footer text */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Logo pulse + color change */
+@keyframes logoPulse {
+    0% { transform: scale(1); filter: hue-rotate(0deg); }
+    50% { transform: scale(1.2); filter: hue-rotate(120deg); }
+    100% { transform: scale(1); filter: hue-rotate(360deg); }
+}
+
+/* Background expanding circle */
+@keyframes bgPulse {
+    0% { width: 0; height: 0; opacity: 0.4; }
+    50% { width: 300%; height: 300%; opacity: 0.1; }
+    100% { width: 0; height: 0; opacity: 0; }
+}
+</style>
 </head>
 <body>
-    <!-- Logo -->
     <img src="logo.png" alt="Paracosm Interactive Logo" class="logo">
-
-    <!-- Footer text -->
-    <div class="footer">
-        Game prototype coming soon...
-    </div>
+    <div class="footer">Game prototype coming soon...</div>
 </body>
 </html>
