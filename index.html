@@ -1,104 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Paracosm Interactive</title>
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #111;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    position: relative;
-    transition: background-color 0.5s ease;
-}
+    <meta charset="UTF-8">
+    <title>Paracosm Interactive</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #7F23BA; /* solid background */
+        }
 
-/* Background pulse circle */
-body::before {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: 0;
-    background-color: #ffffff;
-    opacity: 0.2;
-    animation: bgPulse 10s infinite;
-}
+        .logo {
+            max-width: 50%; /* scales nicely with window */
+            height: auto;
+        }
+    </style>
 
-/* Logo styling */
-.logo {
-    position: relative;
-    max-width: 40%;
-    height: auto;
-    z-index: 1;
-    animation: logoPulse 10s infinite;
-    transition: filter 0.5s ease;
-}
-
-/* Footer text */
-.footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    color: #fff;
-    font-size: 1.2em;
-    text-align: center;
-    z-index: 1;
-}
-
-/* Logo pulse: smooth scale + color swap */
-@keyframes logoPulse {
-    0%, 85% {
-        transform: scale(1);
-        filter: brightness(1);
-    }
-    90% {
-        transform: scale(1.2);
-        filter: brightness(2); /* temporary “flash” effect */
-    }
-    95% {
-        transform: scale(1);
-        filter: brightness(1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Background circle: expands + alternates color */
-@keyframes bgPulse {
-    0%, 85% {
-        transform: translate(-50%, -50%) scale(0);
-        background-color: #ffffff;
-        opacity: 0.2;
-    }
-    90% {
-        transform: translate(-50%, -50%) scale(2.5);
-        background-color: #7F23BA;
-        opacity: 0.3;
-    }
-    95% {
-        transform: translate(-50%, -50%) scale(0);
-        background-color: #ffffff;
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(0);
-    }
-}
-</style>
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon32.png">
-
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon32.png">
 </head>
 <body>
     <img src="logo.png" alt="Paracosm Interactive Logo" class="logo">
