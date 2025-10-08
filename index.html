@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Paracosm Interactive</title>
+    <style>
+        /* Make the page fill the viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #111; /* dark background */
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Logo styling */
+        .logo {
+            max-width: 60%;   /* scales with window */
+            height: auto;
+        }
+
+        /* Footer text at the bottom */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Paracosm Interactive!</h1>
-    <p>Game prototype coming soon...</p>
+    <!-- Logo -->
+    <img src="logo.png" alt="Paracosm Interactive Logo" class="logo">
+
+    <!-- Footer text -->
+    <div class="footer">
+        Game prototype coming soon...
+    </div>
 </body>
 </html>
