@@ -22,15 +22,14 @@ html, body {
 body::before {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
     border-radius: 50%;
     background-color: #222;
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
     top: 50%;
     left: 50%;
-    animation: bgPulse 5s infinite;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+    animation: bgPulse 10s infinite;
 }
 
 /* Logo styling */
@@ -39,8 +38,7 @@ body::before {
     max-width: 40%;
     height: auto;
     z-index: 1;
-    animation: logoPulse 0.3s ease-out infinite;
-    animation-delay: 2s; /* starts after 2s, repeat every 5s */
+    animation: logoPulse 10s infinite;
 }
 
 /* Footer text */
@@ -54,18 +52,30 @@ body::before {
     z-index: 1;
 }
 
-/* Logo pulse + color change */
+/* Logo pulse: fast scale + hue change during first 5% of cycle, rest idle */
 @keyframes logoPulse {
-    0% { transform: scale(1); filter: hue-rotate(0deg); }
-    50% { transform: scale(1.2); filter: hue-rotate(120deg); }
-    100% { transform: scale(1); filter: hue-rotate(360deg); }
+    0%, 5% {
+        transform: scale(1.2);
+        filter: hue-rotate(120deg);
+    }
+    10%, 100% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
 }
 
-/* Background expanding circle */
+/* Background expanding circle: quick expansion during first 5%, then idle */
 @keyframes bgPulse {
-    0% { width: 0; height: 0; opacity: 0.4; }
-    50% { width: 300%; height: 300%; opacity: 0.1; }
-    100% { width: 0; height: 0; opacity: 0; }
+    0%, 5% {
+        width: 300%;
+        height: 300%;
+        opacity: 0.2;
+    }
+    10%, 100% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
 }
 </style>
 </head>
